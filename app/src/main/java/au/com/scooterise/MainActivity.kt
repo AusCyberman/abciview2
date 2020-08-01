@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentActivity
+import androidx.fragment.app.FragmentStatePagerAdapter
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
@@ -25,27 +26,20 @@ import io.realm.mongodb.sync.SyncConfiguration
 import org.bson.Document
 
 class MainActivity : AppCompatActivity() {
-    companion object {
-         var mongoDatabase : MongoDatabase? = null
-        var mongoClient: MongoClient? = null
-
-         var user: User? = null
-        val config = SyncConfiguration.Builder(ABCiview.taskApp.currentUser()!!, "partition")
-            .waitForInitialRemoteData()
-            .build()
-
-
-    }
-
     override fun onStart() {
         super.onStart()
         // configure realm to use the current user and the partition corresponding to "My Project"
 
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
+    companion object{
+        var currentFragment :FragmentID = FragmentID.HomeFragment
+    }
+enum class FragmentID {
+    HomeFragment,ChannelFragment,SearchFragment,FavouritesFragment,SettingsFragment,ContentFragment,ChannelsFragment
+}
 
-        Realm.setDefaultConfiguration(config)
+    override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
 
@@ -57,4 +51,5 @@ class MainActivity : AppCompatActivity() {
 
         navView.setupWithNavController(navController)
     }
+
 }

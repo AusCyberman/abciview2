@@ -14,4 +14,13 @@
     <string name="recommended_for_you">Recommended For You</string>
     <string name="view_favourites">View Favourites</string>
     <string name="remove">Remove From Recently Watched</string>
+    <string name="search_hint">
+        <i>Enter Search Term</i>
+    </string>
+    <!-- Preference Titles -->
+    <string name="parental_control_header">Parental Control</string>
+    <string name="hide_adult_content_switch">Hide Adult Content</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
 </resources>

@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import au.com.scooterise.R
 import io.realm.Realm
@@ -33,8 +34,10 @@ class ContentSectionAdapter(sections: LinkedHashMap<String?, RealmResults<Conten
         holder.text.setText(sections.toList().get(position).first)
 
         holder.recyclerView.apply {
+
             setRecycledViewPool(viewPool)
-            adapter=ContentAdapter(sections.toList().get(position).second)
+            adapter=ContentAdapter(sections.toList().get(position).second.sort("id"))
+            layoutManager=LinearLayoutManager(context,LinearLayoutManager.HORIZONTAL,false)
         }
     }
 

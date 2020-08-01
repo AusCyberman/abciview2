@@ -4,6 +4,6 @@ import io.realm.annotations.RealmClass
 
 @RealmClass(embedded = true)
 open class Content_trailer(
-    var content: Long? = null,
+    var image: String? = null,
     var turi: String? = null
 ): RealmObject() {}

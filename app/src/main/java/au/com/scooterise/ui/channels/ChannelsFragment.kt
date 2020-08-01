@@ -10,17 +10,15 @@ import android.widget.ImageView
 import android.widget.ScrollView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import au.com.scooterise.ABCiview
 import au.com.scooterise.MainActivity
 import au.com.scooterise.R
 import io.realm.OrderedRealmCollection
 import io.realm.Realm
 import io.realm.RealmRecyclerViewAdapter
-import io.realm.RealmResults
 import io.realm.kotlin.where
-import io.realm.mongodb.sync.SyncConfiguration
 
 class ChannelsFragment : Fragment() {
     private lateinit var recyclerView: RecyclerView
@@ -54,14 +52,9 @@ x
         return root
     }
 
-    override fun onDetach() {
-        super.onDetach()
-
-    }
-
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-
+    override fun onStart() {
+        super.onStart()
+        MainActivity.currentFragment= MainActivity.FragmentID.ChannelsFragment
     }
 
     internal class ChannelAdapter(data: OrderedRealmCollection<Channel>) : RealmRecyclerViewAdapter<Channel, ChannelAdapter.ChannelViewHolder?>(data, true) {
@@ -81,30 +74,19 @@ x
             holder.image.setOnClickListener{
                 Toast.makeText(holder.context, obj?.name,200)
                 System.out.println(obj?.name)
-            }
 
+
+                val action = ChannelsFragmentDirections.openChannel().setChannel(position)
+                Navigation.findNavController(it).navigate(action)
+            }
             when (position) {
-                0 -> {
-                    holder.image.setImageResource(R.drawable.ic_abc)
-                }
-                1 -> {
-                    holder.image.setImageResource(R.drawable.ic_abccomedy)
-                }
-                2 -> {
-                    holder.image.setImageResource(R.drawable.ic_abcme)
-                }
-                3 -> {
-                    holder.image.setImageResource(R.drawable.ic_abckids)
-                }
-                4 -> {
-                    holder.image.setImageResource(R.drawable.ic_abcnews)
-                }
-                5 -> {
-                    holder.image.setImageResource(R.drawable.ic_abcarts)
-                }
-                6 -> {
-                    holder.image.setImageResource(R.drawable.ic_iviewpresents)
-                }
+                0 -> holder.image.setImageResource(R.drawable.ic_abc)
+                1 -> holder.image.setImageResource(R.drawable.ic_abccomedy)
+                2 -> holder.image.setImageResource(R.drawable.ic_abcme)
+                3 -> holder.image.setImageResource(R.drawable.ic_abckids)
+                4 -> holder.image.setImageResource(R.drawable.ic_abcnews)
+                5 -> holder.image.setImageResource(R.drawable.ic_abcarts)
+                6 -> holder.image.setImageResource(R.drawable.ic_iviewpresents)
                 else -> { // Note the block
                     print("x is neither 1 nor 2")
                 }

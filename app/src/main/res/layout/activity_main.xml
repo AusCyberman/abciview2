@@ -14,6 +14,8 @@
             android:layout_marginStart="0dp"
             android:layout_marginEnd="0dp"
             android:background="?android:attr/windowBackground"
+            app:itemIconTint="@color/navview"
+            app:itemTextColor="@color/navview"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
@@ -27,12 +29,7 @@
             app:defaultNavHost="true"
             app:navGraph="@navigation/mobile_navigation"
             app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0" app:layout_constraintTop_toBottomOf="@+id/imageView"
-            app:layout_constraintBottom_toTopOf="@+id/nav_view"/>
-    <ImageView
-            android:layout_width="176dp"
-            android:layout_height="64dp" app:srcCompat="@drawable/ic_logo" android:id="@+id/imageView"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"/>
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintBottom_toTopOf="@+id/nav_view" app:layout_constraintTop_toTopOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

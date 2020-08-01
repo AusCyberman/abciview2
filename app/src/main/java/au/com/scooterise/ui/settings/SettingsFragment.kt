@@ -1,17 +1,20 @@
 package au.com.scooterise.ui.settings
 
+import android.content.Context
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import androidx.fragment.app.Fragment
+import androidx.preference.PreferenceFragmentCompat
+import au.com.scooterise.MainActivity
 import au.com.scooterise.R
-import kotlinx.android.synthetic.main.activity_main.*
 
-class SettingsFragment : Fragment() {
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return layoutInflater.inflate(R.layout.fragment_settings,container,false)
+class SettingsFragment : PreferenceFragmentCompat() {
+
+    override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
+        setPreferencesFromResource(R.xml.root_preferences, rootKey)
 
     }
 
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        MainActivity.currentFragment=MainActivity.FragmentID.SettingsFragment
+    }
 }

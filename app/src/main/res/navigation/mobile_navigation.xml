@@ -12,29 +12,82 @@
             tools:layout="@layout/fragment_home">
 
 
-    </fragment>
+        <action android:id="@+id/action_navigation_home_to_navigation_channels"
+                app:destination="@id/navigation_channels"/>
+        <action android:id="@+id/navigateToContent"
+                app:destination="@id/navigation_content" app:enterAnim="@animator/slide_in_left" app:exitAnim="@animator/fast_fade_out"
+                  app:popEnterAnim="@animator/fast_fade_in"  app:popExitAnim="@animator/slide_out_right" >
+            <argument android:name="content" app:argType="integer" android:defaultValue="0"/>
+        </action>
 
+    </fragment>
 
     <fragment
             android:id="@+id/navigation_channels"
             android:name="au.com.scooterise.ui.channels.ChannelsFragment"
             android:label="@string/title_channels"
-            tools:layout="@layout/fragment_channels"/>
+            tools:layout="@layout/fragment_channels">
+        <action  android:id="@+id/open_channel"
+                app:destination="@id/navigation_channel" app:enterAnim="@animator/slide_in_left" app:exitAnim="@animator/fast_fade_out"
+                 app:popEnterAnim="@animator/fast_fade_in"  app:popExitAnim="@animator/slide_out_right"
+                 >
+        <argument
+                android:name="channel"
+                app:argType="integer"
+                android:defaultValue="2" />
+        </action>
+        <action android:id="@+id/action_navigation_channels_to_navigation_search"
+                app:destination="@id/navigation_search"/>
+    </fragment>
     <fragment
             android:id="@+id/navigation_search"
             android:name="au.com.scooterise.ui.search.SearchFragment"
             android:label="@string/title_search"
-            tools:layout="@layout/fragment_search"/>
+            tools:layout="@layout/fragment_search">
+        <action android:id="@+id/action_navigation_search_to_navigation_favourites"
+                app:destination="@id/navigation_favourites"/>
+
+        <action android:id="@+id/navigateToContent"
+                app:destination="@id/navigation_content" app:enterAnim="@animator/slide_in_left" app:exitAnim="@animator/fast_fade_out"
+                app:popEnterAnim="@animator/fast_fade_in" app:popExitAnim="@animator/slide_out_right" >
+            <argument android:name="content" app:argType="integer" android:defaultValue="0"/>
+        </action>
+    </fragment>
     <fragment
             android:id="@+id/navigation_favourites"
             android:name="au.com.scooterise.ui.favourites.FavouritesFragment"
             android:label="@string/title_favourites"
-            tools:layout="@layout/fragment_favourites"/>
+            tools:layout="@layout/fragment_favourites">
+        <action android:id="@+id/action_navigation_favourites_to_navigation_settings"
+                app:destination="@id/navigation_settings"/>
+
+        <action android:id="@+id/navigateToContent"
+                app:destination="@id/navigation_content" app:enterAnim="@animator/slide_in_left" app:exitAnim="@animator/fast_fade_out"
+                app:popEnterAnim="@animator/fast_fade_in" app:popExitAnim="@animator/slide_out_right" >
+            <argument android:name="content" app:argType="integer" android:defaultValue="0"/>
+        </action>
+    </fragment>
 
     <fragment
             android:id="@+id/navigation_settings"
             android:name="au.com.scooterise.ui.settings.SettingsFragment"
             android:label="@string/title_settings"
             tools:layout="@layout/fragment_settings"/>
-
+    <fragment
+            android:id="@+id/navigation_channel"
+            android:name="au.com.scooterise.ui.channels.ChannelFragment"
+            tools:layout="@layout/fragment_channel">
+        <argument android:name="channel" app:argType="integer" android:defaultValue="0"/>
+        <action android:id="@+id/navigateToContent"
+                app:destination="@id/navigation_content" app:enterAnim="@animator/slide_in_left" app:exitAnim="@animator/fast_fade_out"
+                app:popEnterAnim="@animator/fast_fade_in" app:popExitAnim="@animator/slide_out_right" >
+            <argument android:name="content" app:argType="integer" android:defaultValue="0"/>
+        </action>
+    </fragment>
+    <fragment
+            android:id="@+id/navigation_content"
+            android:name="au.com.scooterise.ui.content.ContentFragment"
+            tools:layout="@layout/fragment_content">
+        <argument android:name="content" app:argType="integer" android:defaultValue="0"/>
+    </fragment>
 </navigation>
