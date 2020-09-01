@@ -4,7 +4,7 @@
     <PreferenceCategory
             app:title="@string/parental_control_header">
         <SwitchPreferenceCompat
-                app:key="content"
+                app:key="parent_control"
                 app:title="@string/hide_adult_content_switch"/>
 
 

@@ -44,6 +44,8 @@ class ChannelFragment : Fragment() {
             6 -> root.findViewById<ImageView>(R.id.channelImage).setImageResource(R.drawable.ic_iviewpresents)
         }
 
+
+
         realms= Realm.getDefaultInstance()
         val adapterData : LinkedHashMap<String?, RealmResults<Content>> = LinkedHashMap()
 
@@ -53,13 +55,12 @@ class ChannelFragment : Fragment() {
                 it.category?.let { it1 -> categoriesIntpre.add(it1) }}
         }
 
-
         var categories : RealmResults<Category>? = realms.where<Category>().`in`("id",categoriesIntpre.toTypedArray() ).findAll().sort("id")
         categories?.forEach {
             adapterData.put(it.Name,realms.where<Content>().equalTo("channel",args.channel).equalTo("category",it.id).findAll())
         }
 
-        val adapter : ContentSectionAdapter = ContentSectionAdapter(adapterData)
+        val adapter = ContentSectionAdapter(adapterData)
         var layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
         root.findViewById<ImageView>(R.id.channel_back).apply {  setColorFilter(Color.WHITE)
             setOnClickListener {

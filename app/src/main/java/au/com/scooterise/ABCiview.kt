@@ -7,9 +7,7 @@ import io.realm.log.LogLevel
 import io.realm.log.RealmLog
 import io.realm.mongodb.App
 import io.realm.mongodb.AppConfiguration
-import io.realm.mongodb.Credentials
 import io.realm.mongodb.User
-
 
 
 // global Kotlin extension that resolves to the short version
